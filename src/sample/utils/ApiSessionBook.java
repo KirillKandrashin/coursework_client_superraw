@@ -8,20 +8,21 @@ import kong.unirest.json.JSONObject;
 import sample.models.Author;
 import sample.models.Book;
 import sample.models.Publisher;
+import sample.models.Section;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ApiSessionBook {
-    private static final String url = "https://server-for-coursework.herokuapp.com";
-    //private static final String url = "http://localhost:8080";
+    //private static final String url = "https://server-for-coursework.herokuapp.com";
+    private static final String url = "http://localhost:8080";
 
-      public void createBook(String jsons) {
-          HttpClass.PostRequest(url + "/books", jsons);
+    public void createBook(String jsons) {
+        HttpClass.PostRequest(url + "/books", jsons);
     }
 
     public void editBook(Long id, String jsons) {
-        HttpClass.PostRequest(url + "/books" + id, jsons);
+        HttpClass.PutRequest(url + "/books/" + id, jsons);
     }
 
     public List<Book> getAllfromTable(String dop_url) {
@@ -89,7 +90,6 @@ public class ApiSessionBook {
         ApiSessionPublisher apiSessionPublisher = new ApiSessionPublisher();
         String publisherListlink = currentBook.getJSONObject("_links").getJSONObject("publisherList").getString("href");
         List<Publisher> publisherList = apiSessionPublisher.getAllfromTable(publisherListlink);
-        //System.out.println(authorList);
         return publisherList;
     }
 

@@ -15,6 +15,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import sample.Main;
+import sample.models.Book;
 import sample.models.Visitor;
 import sample.models.VisitorModel;
 import sample.utils.ApiSessionVisitor;
@@ -27,12 +28,11 @@ public class MainVisitorController {
     public TableColumn<Visitor, String> first_nameColumn;
     public TableColumn<Visitor, String> last_nameColumn;
     public TableColumn<Visitor, String> library_cardColumn;
-    @FXML
-    private Label message;
+    public Label message;
 
     private Main main;
     private ApiSessionVisitor apiSessionVisitor = new ApiSessionVisitor();
-    private ObservableList<Visitor> visitorList = FXCollections.observableArrayList();
+    //private ObservableList<Visitor> visitorList = FXCollections.observableArrayList();
     VisitorModel visitorModel = new VisitorModel();
     //Visitor visitor_for_editting = new Visitor();
 
@@ -69,12 +69,12 @@ public class MainVisitorController {
     public void onAddClick(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(this.getClass().getResource("/sample/view/addingvisitors.fxml"));
-        Parent root = (Parent) loader.load();
+        Parent root = loader.load();
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
         stage.initModality(Modality.WINDOW_MODAL);
         stage.initOwner(this.mainTable.getScene().getWindow());
-        AddVisitorController controller = (AddVisitorController) loader.getController();
+        AddVisitorController controller = loader.getController();
         controller.visitorModel = this.visitorModel;
         stage.showAndWait();
     }
@@ -107,6 +107,29 @@ public class MainVisitorController {
         stage.initOwner(this.mainTable.getScene().getWindow());
         InfoController controller = (InfoController) loader.getController();
         stage.showAndWait();
+    }
+
+    public void onEditClick(ActionEvent event) throws IOException {
+        String errorMessage = "";
+        message.setText(errorMessage);
+        int selectedIndex = mainTable.getSelectionModel().getSelectedIndex();
+        if (selectedIndex >= 0) {
+            Visitor visitor = mainTable.getItems().get(selectedIndex);
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(this.getClass().getResource("/sample/view/edittingvisitors.fxml"));
+            Parent root = loader.load();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.initModality(Modality.WINDOW_MODAL);
+            stage.initOwner(this.mainTable.getScene().getWindow());
+            EditVisitorController controller = loader.getController();
+            controller.setVisitor(visitor);
+            controller.visitorModel = this.visitorModel;
+            stage.showAndWait();
+        } else {
+            errorMessage += "Выберите строку, которую хотите изменить.";
+            message.setText(errorMessage);
+        }
     }
 }
 

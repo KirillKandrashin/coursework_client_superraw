@@ -6,6 +6,6 @@
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="243.0" prefWidth="374.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.InfoController">
    <children>
       <Button layoutX="165.0" layoutY="193.0" mnemonicParsing="false" onAction="#onCloseClick" text="Close" />
-      <Label layoutX="78.0" layoutY="14.0" prefHeight="158.0" prefWidth="219.0" text="Данная работа &quot;Информационно-справочная система библиотеки&quot; выполнена студентом 2го круса группы ПИ19-2 Кандрашиным Кириллом в рамках курсовой работы по предмету &quot;Современные технологии программирования&quot;" textAlignment="CENTER" wrapText="true" />
+      <Label layoutX="78.0" layoutY="14.0" prefHeight="158.0" prefWidth="219.0" text="Данная работа &quot;Информационно-справочная система библиотеки&quot; выполнена студентом 2го курса группы ПИ19-2 Кандрашиным Кириллом в рамках курсовой работы по предмету &quot;Современные технологии программирования&quot;" textAlignment="CENTER" wrapText="true" />
    </children>
 </Pane>

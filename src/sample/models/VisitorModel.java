@@ -33,15 +33,14 @@ public class VisitorModel {
         }
     }
 
-  //  public void edit(Visitor ed_visitor) {
-  //      ApiSessionVisitor apiSessionVisitor = new ApiSessionVisitor();
-  //      String json = new Visitor(ed_visitor.getTitle(), ed_visitor.getType(),ed_visitor.getGenre(), ed_visitor.getNumber_of_copies(), ed_visitor.getAuthors_link(), ed_visitor.getPublishers_link(), ed_visitor.getSection_link()).toJson();
-  //      apiSessionVisitor.editVisitor(ed_visitor.getId(), json);
+    public void edit(Visitor ed_visitor) {
+        String json = new Visitor(ed_visitor.getFirst_name(), ed_visitor.getLast_name(),ed_visitor.getLibrary_card()).toJson();
+        apiSessionVisitor.editVisitor(ed_visitor.getId(), json);
 
-//        for (VisitorModel.DataChangedListener listener : dataChangedListeners) {
-  //          listener.dataChanged(visitorsList);
-   //     }
-   // }
+        for (VisitorModel.DataChangedListener listener : dataChangedListeners) {
+            listener.dataChanged(visitorsList);
+        }
+    }
 
     private void emitDataChanged(){
         for (VisitorModel.DataChangedListener listener: dataChangedListeners) {

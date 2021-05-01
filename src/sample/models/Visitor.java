@@ -28,6 +28,10 @@ public class Visitor implements Serializable, ApiModel {
         this.library_card = library_card;
     }
 
+    public Visitor(){
+
+    }
+
 
     public Long getId() {
         return id;

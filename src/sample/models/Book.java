@@ -45,19 +45,15 @@ public class Book implements Serializable, ApiModel {
         this.section_link = section_link;
     }
 
-    public Book(Long id, String title, String type, String genre, Integer number_of_copies, List<String> authors_link, List<String> publishers_link, String section_link) {
+    public Book(Long id, String title, String type, String genre, Integer number_of_copies) {
         this.id = id;
         this.title = title;
         this.type = type;
         this.genre = genre;
         this.number_of_copies = number_of_copies;
-        this.authors_link = authors_link;
-        this.publishers_link = publishers_link;
-        this.section_link = section_link;
     }
 
     public Book(){
-
     }
 
     public Long getId() {

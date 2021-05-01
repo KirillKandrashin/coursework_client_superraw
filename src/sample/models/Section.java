@@ -12,9 +12,9 @@ public class Section implements Serializable {
         this.link = link;
     }
 
-    public Section() {
-    }
+    public Section(){
 
+    }
     public Long getId() {
         return id;
     }

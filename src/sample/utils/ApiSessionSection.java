@@ -11,13 +11,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ApiSessionSection {
-    private static final String url = "https://server-for-coursework.herokuapp.com";
-    //private static final String url = "http://localhost:8080";
+    //private static final String url = "https://server-for-coursework.herokuapp.com";
+    private static final String url = "http://localhost:8080";
 
     public void createSection(Section section) {
         Unirest.post(url + "/sections")
             .header("Content-Type", "application/json")
-            .body(section)
+            .body("{}")
             .asEmpty();
     }
 

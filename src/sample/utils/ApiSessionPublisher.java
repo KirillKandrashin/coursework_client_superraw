@@ -10,8 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ApiSessionPublisher {
-    private static final String url = "https://server-for-coursework.herokuapp.com";
-    //private static final String url = "http://localhost:8080";
+    //private static final String url = "https://server-for-coursework.herokuapp.com";
+    private static final String url = "http://localhost:8080";
 
     public void createPublisher(Publisher publisher) {
         Unirest.post(url + "/publishers")
@@ -50,11 +50,6 @@ public class ApiSessionPublisher {
         Long id_parsed = Long.parseLong(ParseID(currentPublisher));
         String name = currentPublisher.getString("name");
         String link = getPublishersLink(currentPublisher);
-        // List<Book> bookList = ParseBookList(currentPublisher);
-        // ObservableList<Book> obbookList = FXCollections.observableArrayList(bookList);
-        // System.out.println(id_parsed);
-        // System.out.println(name);
-        // System.out.println(obbookList);
         Publisher publisher = new Publisher(id_parsed, name, link);
         return publisher;
     }

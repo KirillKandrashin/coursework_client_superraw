@@ -5,21 +5,22 @@ import kong.unirest.JsonNode;
 import kong.unirest.Unirest;
 import kong.unirest.json.JSONArray;
 import kong.unirest.json.JSONObject;
+import sample.models.Author;
 import sample.models.Visitor;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ApiSessionVisitor {
-    private static final String url = "https://server-for-coursework.herokuapp.com";
-    //private static final String url = "http://localhost:8080";
+    //private static final String url = "https://server-for-coursework.herokuapp.com";
+    private static final String url = "http://localhost:8080";
 
     public void createVisitor(String jsons) {
         HttpClass.PostRequest(url + "/visitors", jsons);
     }
 
     public void editVisitor(Long id, String jsons) {
-        HttpClass.PostRequest(url + "/visitors" + id, jsons);
+        HttpClass.PutRequest(url + "/visitors" + id, jsons);
     }
 
     public List<Visitor> getAllfromTable(String dop_url) {

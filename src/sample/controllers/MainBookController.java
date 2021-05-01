@@ -31,14 +31,13 @@ public class MainBookController {
     public TableColumn<Book, String> typeColumn;
     public TableColumn<Book, Integer> number_of_copiesColumn;
     public TableColumn<Book, Long> section_idColumn;
-    @FXML
-    private Label message;
+    public Label message;
 
     private Main main;
     private ApiSessionBook apiSessionBook = new ApiSessionBook();
-    private ObservableList<Book> bookList = FXCollections.observableArrayList();
+    //private ObservableList<Book> bookList = FXCollections.observableArrayList();
     BookModel bookModel = new BookModel();
-    Book book_for_editting = new Book();
+   // Book book_for_editting = new Book();
 
     public void initialize() {
         this.idColumn.setCellValueFactory(new PropertyValueFactory("id"));
@@ -77,12 +76,12 @@ public class MainBookController {
     public void onAddClick(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(this.getClass().getResource("/sample/view/addingbooks.fxml"));
-        Parent root = (Parent) loader.load();
+        Parent root = loader.load();
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
         stage.initModality(Modality.WINDOW_MODAL);
         stage.initOwner(this.mainTable.getScene().getWindow());
-        AddBookController controller = (AddBookController) loader.getController();
+        AddBookController controller = loader.getController();
         controller.bookModel = this.bookModel;
         stage.showAndWait();
     }
@@ -115,5 +114,28 @@ public class MainBookController {
         stage.initOwner(this.mainTable.getScene().getWindow());
         InfoController controller = (InfoController) loader.getController();
         stage.showAndWait();
+    }
+
+    public void onEditClick(ActionEvent event) throws IOException {
+        String errorMessage = "";
+        message.setText(errorMessage);
+        int selectedIndex = mainTable.getSelectionModel().getSelectedIndex();
+        if (selectedIndex >= 0) {
+            Book book = mainTable.getItems().get(selectedIndex);
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(this.getClass().getResource("/sample/view/edittingbooks.fxml"));
+            Parent root = loader.load();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.initModality(Modality.WINDOW_MODAL);
+            stage.initOwner(this.mainTable.getScene().getWindow());
+            EditBookController controller = loader.getController();
+            controller.setBook(book);
+            controller.bookModel = this.bookModel;
+            stage.showAndWait();
+        } else {
+            errorMessage += "Выберите строку, которую хотите изменить.";
+            message.setText(errorMessage);
+        }
     }
 }

@@ -5,36 +5,38 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-
-import sample.models.Visitor;
-import sample.models.VisitorModel;
+import sample.models.*;
+import sample.utils.ApiSessionAuthor;
+import sample.utils.ApiSessionPublisher;
+import sample.utils.ApiSessionSection;
+import sample.utils.ApiSessionVisitor;
 
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.ResourceBundle;
 
-public class AddVisitorController implements Initializable{
+public class EditVisitorController implements Initializable {
     public TextField txtVisitorFirstName;
     public TextField txtVisitorLastName;
     public TextField txtVisitorLibraryCard;
     public VisitorModel visitorModel;
 
-    public static void show() {
+    private Visitor visitor;
+
+    public static void show(Visitor visitor) {
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
     }
 
-    public void onSaveClick(ActionEvent actionEvent) {
-        if (!getVisitor().equals("")) {
-            this.visitorModel.add(getVisitor());
-        }
-        ((Stage)((Node)actionEvent.getSource()).getScene().getWindow()).close();
-    }
-
-    public void onCancelClick(ActionEvent actionEvent) {
-        ((Stage)((Node)actionEvent.getSource()).getScene().getWindow()).close();
+    public void setVisitor(Visitor visitor) {
+        this.visitor = visitor;
+        txtVisitorFirstName.setText(visitor.getFirst_name());
+        txtVisitorLastName.setText(visitor.getLast_name());
+        txtVisitorLibraryCard.setText(visitor.getLibrary_card());
     }
 
     private boolean isInputValid() {
@@ -50,18 +52,27 @@ public class AddVisitorController implements Initializable{
         return true;
     }
 
+    public void onSaveClick(ActionEvent actionEvent) {
+        if (getVisitor().getId() != null) {
+            this.visitorModel.edit(getVisitor());
+        }
+        ((Stage)((Node)actionEvent.getSource()).getScene().getWindow()).close();
+    }
 
-    public String getVisitor(){
-        String result;
+    public void onCancelClick(ActionEvent actionEvent) {
+        ((Stage)((Node)actionEvent.getSource()).getScene().getWindow()).close();
+    }
 
+
+    public Visitor getVisitor(){
+        Visitor result = new Visitor();
         if (isInputValid()) {
+
             String first_name = this.txtVisitorFirstName.getText();
             String last_name = this.txtVisitorLastName.getText();
             String library_card = this.txtVisitorLibraryCard.getText();
-            result = new Visitor(first_name, last_name, library_card).toJson();
-        }else{
-            result = "";
-        }
+            result = new Visitor(visitor.getId(), first_name, last_name, library_card);
+            }
         return result;
     }
 }

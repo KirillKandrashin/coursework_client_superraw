@@ -25,7 +25,6 @@ public class BookModel {
     }
 
     public void add(String json) {
-        ApiSessionBook apiSessionBook = new ApiSessionBook();
         apiSessionBook.createBook(json);
 
         for (BookModel.DataChangedListener listener : dataChangedListeners) {
@@ -34,8 +33,7 @@ public class BookModel {
     }
 
     public void edit(Book ed_book) {
-        ApiSessionBook apiSessionBook = new ApiSessionBook();
-        String json = new Book(ed_book.getTitle(), ed_book.getType(),ed_book.getGenre(), ed_book.getNumber_of_copies(), ed_book.getAuthors_link(), ed_book.getPublishers_link(), ed_book.getSection_link()).toJson();
+        String json = ed_book.toJson();
         apiSessionBook.editBook(ed_book.getId(), json);
 
         for (BookModel.DataChangedListener listener : dataChangedListeners) {
