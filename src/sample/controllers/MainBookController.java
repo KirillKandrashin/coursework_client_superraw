@@ -103,6 +103,17 @@ public class MainBookController {
         MainVisitorController controller = (MainVisitorController) loader.getController();
         ((Stage)((Node)actionEvent.getSource()).getScene().getWindow()).close();
         stage.show();
+    }
 
+    public void onInfoClick(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(this.getClass().getResource("/sample/view/info.fxml"));
+        Parent root = (Parent) loader.load();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.initModality(Modality.WINDOW_MODAL);
+        stage.initOwner(this.mainTable.getScene().getWindow());
+        InfoController controller = (InfoController) loader.getController();
+        stage.showAndWait();
     }
 }
