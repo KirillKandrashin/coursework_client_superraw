@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="443.0" prefWidth="908.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.MainBookController">
+    <children>
+        <BorderPane prefHeight="443.0" prefWidth="912.0" styleClass="body">
+            <top>
+                <Pane prefHeight="123.0" prefWidth="843.0" style="-fx-background-color: #1E3C00;" BorderPane.alignment="CENTER">
+                    <children>
+                        <Label layoutX="186.0" layoutY="46.0" styleClass="title-text" text="БИБЛИОТЕКА ИМЕНИ КАНДРАШИНА КИРИЛЛА" textFill="WHITE">
+                            <font>
+                                <Font name="Century Gothic Bold" size="24.0" />
+                            </font></Label>
+                    </children>
+                </Pane>
+            </top>
+            <center>
+                <Pane prefHeight="287.0" prefWidth="843.0" BorderPane.alignment="CENTER">
+                    <children>
+                        <!-- panel de control -->
+                        <Pane layoutY="-4.0" prefHeight="55.0" prefWidth="912.0">
+                            <children>
+                                <Button fx:id="btnUpdate" layoutX="18.0" layoutY="12.0" mnemonicParsing="false" onAction="#onUpdateClick" text="Обновить">
+                                    <styleClass>
+                                        <String fx:value="btn" />
+                                        <String fx:value="btn-update" />
+                                    </styleClass>
+                                </Button>
+                                <Button fx:id="btnRemove" layoutX="762.0" layoutY="12.0" mnemonicParsing="false" onAction="#onDeleteClick" text="Удалить">
+                                    <styleClass>
+                                        <String fx:value="btn" />
+                                        <String fx:value="btn-remove" />
+                                    </styleClass>
+                                </Button>
+                                <Button fx:id="btnNew" layoutX="833.0" layoutY="12.0" mnemonicParsing="false" onAction="#onAddClick" text="Добавить">
+                                    <styleClass>
+                                        <String fx:value="btn" />
+                                        <String fx:value="btn-new" />
+                                    </styleClass>
+                                </Button>
+                        <Button layoutX="685.0" layoutY="12.0" mnemonicParsing="false" text="Изменить" />
+                        <Button layoutX="18.0" layoutY="-99.0" mnemonicParsing="false" prefHeight="72.0" prefWidth="128.0" onAction="#onSwitchClick" text="Список посетителей" textAlignment="CENTER" />
+                            </children>
+                        </Pane>
+                        <!-- tabla -->
+                        <TableView fx:id="mainTable" layoutX="14.0" layoutY="51.0" prefHeight="229.0" prefWidth="888.0">
+                            <columns>
+                                <TableColumn fx:id="idColumn" prefWidth="35.0" text="ID" />
+                                <TableColumn fx:id="titleColumn" prefWidth="125.0" text="Название" />
+                                <TableColumn fx:id="author_nameColumn" prefWidth="173.1999969482422" text="Автор" />
+                                <TableColumn fx:id="publisher_nameColumn" prefWidth="155.20001220703125" text="Издатель" />
+                                <TableColumn fx:id="genreColumn" prefWidth="149.0" text="Жанр" />
+                                <TableColumn fx:id="typeColumn" prefWidth="112.79998779296875" text="Тип" />
+                                <TableColumn fx:id="number_of_copiesColumn" minWidth="0.0" prefWidth="80.79998779296875" text="Количество" />
+                                <TableColumn fx:id="section_idColumn" prefWidth="56.0" text="Секция" />
+                            </columns>
+                        </TableView>
+                        <Label fx:id="message" alignment="CENTER" layoutX="258.0" layoutY="12.0" prefHeight="30.0" prefWidth="343.0" textAlignment="CENTER" textFill="#9c0909">
+                            <font>
+                                <Font size="17.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </Pane>
+            </center>
+        </BorderPane>
+    </children>
+</AnchorPane>
