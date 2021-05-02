@@ -20,7 +20,7 @@ public class ApiSessionVisitor {
     }
 
     public void editVisitor(Long id, String jsons) {
-        HttpClass.PutRequest(url + "/visitors" + id, jsons);
+        HttpClass.PutRequest(url + "/visitors/" + id, jsons);
     }
 
     public List<Visitor> getAllfromTable(String dop_url) {

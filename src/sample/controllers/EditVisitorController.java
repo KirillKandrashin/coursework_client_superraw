@@ -6,15 +6,8 @@ import javafx.scene.Node;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import sample.models.*;
-import sample.utils.ApiSessionAuthor;
-import sample.utils.ApiSessionPublisher;
-import sample.utils.ApiSessionSection;
-import sample.utils.ApiSessionVisitor;
 
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class EditVisitorController implements Initializable {

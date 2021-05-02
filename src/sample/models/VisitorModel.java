@@ -34,7 +34,7 @@ public class VisitorModel {
     }
 
     public void edit(Visitor ed_visitor) {
-        String json = new Visitor(ed_visitor.getFirst_name(), ed_visitor.getLast_name(),ed_visitor.getLibrary_card()).toJson();
+        String json = new Visitor(ed_visitor.getFirst_name(), ed_visitor.getLast_name(),ed_visitor.getLibrary_card()).toJsonPut();
         apiSessionVisitor.editVisitor(ed_visitor.getId(), json);
 
         for (VisitorModel.DataChangedListener listener : dataChangedListeners) {

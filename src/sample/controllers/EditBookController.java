@@ -5,19 +5,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import sample.models.Author;
 import sample.models.Book;
 import sample.models.BookModel;
-import sample.models.Publisher;
-import sample.utils.ApiSessionAuthor;
-import sample.utils.ApiSessionBook;
-import sample.utils.ApiSessionPublisher;
-import sample.utils.ApiSessionSection;
 
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class EditBookController implements Initializable {

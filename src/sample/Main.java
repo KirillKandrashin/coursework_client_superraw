@@ -11,7 +11,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-        Parent root = FXMLLoader.load(getClass().getResource("/sample/view/mainformbooks.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/sample/view/signin.fxml"));
 
         primaryStage.setTitle("Информационно-справочная система библиотеки");
 

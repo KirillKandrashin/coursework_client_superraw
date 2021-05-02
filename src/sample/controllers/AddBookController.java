@@ -1,16 +1,13 @@
 package sample.controllers;
 
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import sample.models.*;
 import sample.utils.ApiSessionAuthor;
 import sample.utils.ApiSessionPublisher;
-import sample.utils.ApiSessionSection;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -25,7 +22,6 @@ public class AddBookController implements Initializable {
     public TextField txtBookGenre;
     public TextField txtBookType;
     public TextField txtBookNumbers_of_copies;
-    public TextField txtBookSection;
     public BookModel bookModel;
 
     public static void show() {
@@ -56,11 +52,6 @@ public class AddBookController implements Initializable {
         } catch (NumberFormatException e) {
             return false;
         }
-        try{
-            Long.valueOf(this.txtBookSection.getText());
-        } catch (NumberFormatException e) {
-            return false;
-        }
         return true;
         }
 
@@ -86,11 +77,9 @@ public class AddBookController implements Initializable {
             String type = this.txtBookType.getText();
             String genre = this.txtBookGenre.getText();
             Integer numbers_of_copies = Integer.parseInt(this.txtBookNumbers_of_copies.getText());
-            Long section_id = Long.valueOf(this.txtBookSection.getText());
 
             ApiSessionPublisher apiSessionPublisher = new ApiSessionPublisher();
             ApiSessionAuthor apiSessionAuthor = new ApiSessionAuthor();
-            ApiSessionSection apiSessionSection = new ApiSessionSection();
             List<String> authorList = new ArrayList<String>();
             List<String> publisherList = new ArrayList<String>();
             List<String> authorsList = new ArrayList<>(Arrays.asList(authors.split(",")));
@@ -111,13 +100,7 @@ public class AddBookController implements Initializable {
                 }
                 publisherList.add(apiSessionPublisher.getPublisherByName(publishers_name).getLink());
             }
-
-            while (apiSessionSection.getSectionById(section_id) == null) {
-                Section s = new Section();
-                apiSessionSection.createSection(s);
-            }
-            String section_link = apiSessionSection.getSectionById(section_id).getLink();
-            result = new Book(title, type, genre, numbers_of_copies, authorList, publisherList, section_link).toJson();
+            result = new Book(title, type, genre, numbers_of_copies, authorList, publisherList).toJson();
         }else{
             result = "";
         }

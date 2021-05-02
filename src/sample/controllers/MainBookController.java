@@ -30,7 +30,6 @@ public class MainBookController {
     public TableColumn<Book, String> genreColumn;
     public TableColumn<Book, String> typeColumn;
     public TableColumn<Book, Integer> number_of_copiesColumn;
-    public TableColumn<Book, Long> section_idColumn;
     public Label message;
 
     private Main main;
@@ -47,7 +46,6 @@ public class MainBookController {
         this.genreColumn.setCellValueFactory(new PropertyValueFactory("genre"));
         this.typeColumn.setCellValueFactory(new PropertyValueFactory("type"));
         this.number_of_copiesColumn.setCellValueFactory(new PropertyValueFactory("number_of_copies"));
-        this.section_idColumn.setCellValueFactory(new PropertyValueFactory("section_id"));
         this.bookModel.addDataChangedListener((books) -> {
             this.mainTable.setItems(FXCollections.observableArrayList(books));
         });
@@ -98,7 +96,7 @@ public class MainBookController {
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
         stage.initModality(Modality.WINDOW_MODAL);
-        stage.initOwner(this.mainTable.getScene().getWindow());
+        //stage.initOwner(this.mainTable.getScene().getWindow());
         MainVisitorController controller = (MainVisitorController) loader.getController();
         ((Stage)((Node)actionEvent.getSource()).getScene().getWindow()).close();
         stage.show();

@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Visitor implements Serializable, ApiModel {
+public class Visitor implements Serializable, ApiModel, ApiModelPut {
     private static final long serialVersionUID = 1447199063826949783L;
 
     private Long id;
@@ -69,6 +69,16 @@ public class Visitor implements Serializable, ApiModel {
 
     @Override
     public String toJson() {
+        Gson gson = new Gson();
+        Map<String, Object> map = new HashMap<>();
+        map.put("first_name", getFirst_name());
+        map.put("last_name", getLast_name());
+        map.put("library_card", getLibrary_card());
+        return gson.toJson(map);
+    }
+
+    @Override
+    public String toJsonPut() {
         Gson gson = new Gson();
         Map<String, Object> map = new HashMap<>();
         map.put("first_name", getFirst_name());

@@ -33,7 +33,7 @@ public class BookModel {
     }
 
     public void edit(Book ed_book) {
-        String json = ed_book.toJson();
+        String json = ed_book.toJsonPut();
         apiSessionBook.editBook(ed_book.getId(), json);
 
         for (BookModel.DataChangedListener listener : dataChangedListeners) {

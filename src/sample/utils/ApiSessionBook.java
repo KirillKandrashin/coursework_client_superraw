@@ -8,7 +8,6 @@ import kong.unirest.json.JSONObject;
 import sample.models.Author;
 import sample.models.Book;
 import sample.models.Publisher;
-import sample.models.Section;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,7 +47,6 @@ public class ApiSessionBook {
         String type = currentBook.getString("type");
         String genre = currentBook.getString("genre");
         Integer number_of_copies = currentBook.getInt("number_of_copies");
-        Long section_id_parsed = Long.parseLong(Parse_Section_ID(currentBook));
         List<String> authors_names = new ArrayList<>();
         List<String> publishers_names = new ArrayList<>();
         for (int s = 0; s < ParseAuthorList(currentBook).size(); s++){
@@ -61,7 +59,7 @@ public class ApiSessionBook {
         String p_n_result = String.join(",", publishers_names);
         System.out.println(a_n_result);
         System.out.println(p_n_result);
-        Book book = new Book(id_parsed, title, a_n_result, p_n_result, type, genre, number_of_copies, section_id_parsed);
+        Book book = new Book(id_parsed, title, a_n_result, p_n_result, type, genre, number_of_copies);
         return book;
     }
 
@@ -69,14 +67,6 @@ public class ApiSessionBook {
         String id_raw = currentBook.getJSONObject("_links").getJSONObject("self").getString("href");
         String id_p = id_raw.substring(id_raw.length() - 1);
         return id_p;
-    }
-
-    public String Parse_Section_ID(JSONObject currentBook) {
-        String sectionlink = currentBook.getJSONObject("_links").getJSONObject("section").getString("href");
-        HttpResponse<JsonNode> response = Unirest.get(sectionlink).asJson();
-        String answer = response.getBody().getObject().getJSONObject("_links").getJSONObject("self").getString("href");
-        String sec_id_p = answer.substring(answer.length() - 1);
-        return sec_id_p;
     }
 
     public List<Author> ParseAuthorList(JSONObject currentBook){

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" style="-fx-background-color: #1E3C00;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.SignInController">
+    <children>
+        <AnchorPane layoutY="97.0" prefHeight="303.0" prefWidth="700.0" style="-fx-background-color: #fafafa;">
+            <children>
+                <TextField fx:id="txtUserLogin" layoutX="202.0" layoutY="85.0" prefHeight="27.0" prefWidth="302.0" promptText="Логин" style="-fx-background-color: #fafafa; -fx-border-color: silver; -fx-border-radius: 5;">
+                    <font>
+                        <Font size="17.0" />
+                    </font>
+                </TextField>
+                <PasswordField fx:id="txtUserPassword" layoutX="204.0" layoutY="138.0" prefHeight="27.0" prefWidth="302.0" promptText="Пароль" style="-fx-background-color: #fafafa; -fx-border-color: silver; -fx-border-radius: 5;">
+                    <font>
+                        <Font size="17.0" />
+                    </font>
+                </PasswordField>
+                <Label layoutX="242.0" layoutY="14.0" text="Авторизация" textFill="#8a8a8a">
+                    <font>
+                        <Font name="Lobster" size="37.0" />
+                    </font>
+                </Label>
+                <Button fx:id="authSignInButton" layoutX="290.0" layoutY="201.0" mnemonicParsing="false" prefHeight="14.0" prefWidth="120.0" onAction="#onSignInClick" text="Войти">
+                    <font>
+                        <Font name="Lobster" size="28.0" />
+                    </font>
+                </Button>
+              <Button fx:id="authSigUpButton" layoutX="520.0" layoutY="242.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="163.0" onAction="#onSignUpClick" text="Зарегистрироваться">
+                  <font>
+                      <Font name="Lobster" size="15.0" />
+                  </font>
+              </Button>
+            </children>
+        </AnchorPane>
+        <Label layoutX="83.0" layoutY="33.0" text="БИБЛИОТЕКА АКАДЕМИКА ЛЮЛЬКИ" textAlignment="CENTER" textFill="WHITE">
+            <font>
+                <Font name="Century Gothic Bold" size="24.0" />
+            </font>
+        </Label>
+        <Label fx:id="message" alignment="CENTER" contentDisplay="CENTER" layoutX="178.0" layoutY="-1.0" prefHeight="30.0" prefWidth="343.0" textAlignment="CENTER" textFill="#9c0909">
+            <font>
+                <Font size="15.0" />
+            </font>
+        </Label>
+    </children>
+</AnchorPane>
