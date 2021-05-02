@@ -18,13 +18,13 @@ public class Book implements Serializable, ApiModel, ApiModelPut {
     private String type;
     private String genre;
     private Integer number_of_copies;
-    private Long section_id;
 
     private List<String> authors_link;
     private List<String> publishers_link;
-    private String section_link;
 
-    public Book(Long id, String title, String author_name, String publisher_name, String type, String genre, Integer number_of_copies) {
+    private String link;
+
+    public Book(Long id, String title, String author_name, String publisher_name, String type, String genre, Integer number_of_copies, String link) {
         this.id = id;
         this.title = title;
         this.author_name = author_name;
@@ -32,6 +32,7 @@ public class Book implements Serializable, ApiModel, ApiModelPut {
         this.type = type;
         this.genre = genre;
         this.number_of_copies = number_of_copies;
+        this.link = link;
     }
 
     public Book(String title, String type, String genre, Integer number_of_copies, List<String> authors_link, List<String> publishers_link) {

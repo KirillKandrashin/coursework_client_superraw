@@ -1,9 +1,7 @@
 package sample.controllers;
 
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -15,6 +13,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import sample.Main;
+import sample.controllers.adding.AddBookController;
+import sample.controllers.editting.EditBookController;
 import sample.models.Book;
 import sample.models.BookModel;
 import sample.utils.ApiSessionBook;
@@ -84,7 +84,7 @@ public class MainBookController {
         stage.showAndWait();
     }
 
-    public void onSwitchClick(ActionEvent actionEvent) {
+    public void onSwitchVClick(ActionEvent actionEvent) {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(this.getClass().getResource("/sample/view/mainformvisitors.fxml"));
         Parent root = null;
@@ -98,6 +98,41 @@ public class MainBookController {
         stage.initModality(Modality.WINDOW_MODAL);
         //stage.initOwner(this.mainTable.getScene().getWindow());
         MainVisitorController controller = (MainVisitorController) loader.getController();
+        ((Stage)((Node)actionEvent.getSource()).getScene().getWindow()).close();
+        stage.show();
+    }
+    public void onSwitchAClick(ActionEvent actionEvent) {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(this.getClass().getResource("/sample/view/mainformauthors.fxml"));
+        Parent root = null;
+        try {
+            root = (Parent) loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.initModality(Modality.WINDOW_MODAL);
+        //stage.initOwner(this.mainTable.getScene().getWindow());
+        MainAuthorController controller = (MainAuthorController) loader.getController();
+        ((Stage)((Node)actionEvent.getSource()).getScene().getWindow()).close();
+        stage.show();
+    }
+
+    public void onSwitchPClick(ActionEvent actionEvent) {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(this.getClass().getResource("/sample/view/mainformpublishers.fxml"));
+        Parent root = null;
+        try {
+            root = (Parent) loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.initModality(Modality.WINDOW_MODAL);
+        stage.initOwner(this.mainTable.getScene().getWindow());
+        MainPublisherController controller = (MainPublisherController)  loader.getController();
         ((Stage)((Node)actionEvent.getSource()).getScene().getWindow()).close();
         stage.show();
     }

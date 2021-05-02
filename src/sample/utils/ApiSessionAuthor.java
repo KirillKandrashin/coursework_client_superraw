@@ -5,6 +5,7 @@ import kong.unirest.json.JSONArray;
 import kong.unirest.json.JSONObject;
 import sample.models.Author;
 import sample.models.Book;
+import sample.models.Author;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,12 +14,14 @@ public class ApiSessionAuthor {
     //private static final String url = "https://kandrashin-server-coursework.herokuapp.com/";
     private static final String url = "http://localhost:8080";
 
-    public void createAuthor(Author author) {
-        Unirest.post(url + "/authors")
-                .header("Content-Type", "application/json")
-                .body(author)
-                .asEmpty();
+    public void createAuthor(String jsons) {
+        HttpClass.PostRequest(url + "/authors", jsons);
     }
+
+    public void editAuthor(Long id, String jsons) {
+        HttpClass.PutRequest(url + "/authors/" + id, jsons);
+    }
+
 
     public List<Author> getAllfromTable(String dop_url) {
         List<Author> result = new ArrayList<>();
@@ -46,12 +49,13 @@ public class ApiSessionAuthor {
         return null;
     }
 
-
     public Author authorFromJson(JSONObject currentAuthor){
         Long id_parsed = Long.parseLong(ParseID(currentAuthor));
         String name = currentAuthor.getString("name");
         String link = getAuthorsLink(currentAuthor);
-        Author author = new Author(id_parsed, name, link);
+        List<String> books_names = ParseBookList(currentAuthor);
+        String b_n_result = String.join(",", books_names);
+        Author author = new Author(id_parsed, name, link, b_n_result);
         return author;
     }
 
@@ -64,5 +68,20 @@ public class ApiSessionAuthor {
     public String getAuthorsLink(JSONObject currentAuthor){
         String link = currentAuthor.getJSONObject("_links").getJSONObject("self").getString("href");
         return link;
+    }
+
+    public List<String> ParseBookList(JSONObject currentAuthor){
+        List<String> authorList = new ArrayList<>();
+        String bookListlink = currentAuthor.getJSONObject("_links").getJSONObject("bookList").getString("href");
+        JSONArray answer = HttpClass.GetRequest(bookListlink, "books");
+        for (int i = 0; i < answer.length(); i++) {
+            authorList.add(bookGetTitle(answer.getJSONObject(i)));
+        }
+        return authorList;
+    }
+
+    public String bookGetTitle(JSONObject currentBook) {
+        String title = currentBook.getString("title");
+        return title;
     }
 }

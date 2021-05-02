@@ -45,6 +45,7 @@ public class ApiSessionBook {
         Integer number_of_copies = currentBook.getInt("number_of_copies");
         List<String> authors_names = new ArrayList<>();
         List<String> publishers_names = new ArrayList<>();
+        String link = getBooksLink(currentBook);
         for (int s = 0; s < ParseAuthorList(currentBook).size(); s++){
             authors_names.add(ParseAuthorList(currentBook).get(s).getName());
         }
@@ -53,7 +54,7 @@ public class ApiSessionBook {
             publishers_names.add(ParsePublisherList(currentBook).get(b).getName());
         }
         String p_n_result = String.join(",", publishers_names);
-        Book book = new Book(id_parsed, title, a_n_result, p_n_result, type, genre, number_of_copies);
+        Book book = new Book(id_parsed, title, a_n_result, p_n_result, type, genre, number_of_copies, link);
         return book;
     }
 
@@ -82,5 +83,10 @@ public class ApiSessionBook {
         if (id == null)
             return false;
         return HttpClass.DeleteRequest(url + "/books/" + Long.valueOf(id));
+    }
+
+    public String getBooksLink(JSONObject currentBook){
+        String link = currentBook.getJSONObject("_links").getJSONObject("self").getString("href");
+        return link;
     }
 }

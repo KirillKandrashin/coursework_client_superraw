@@ -13,12 +13,14 @@ public class ApiSessionPublisher {
     //private static final String url = "https://kandrashin-server-coursework.herokuapp.com/";
     private static final String url = "http://localhost:8080";
 
-    public void createPublisher(Publisher publisher) {
-        Unirest.post(url + "/publishers")
-                .header("Content-Type", "application/json")
-                .body(publisher)
-                .asEmpty();
+    public void createPublisher(String jsons) {
+        HttpClass.PostRequest(url + "/publishers", jsons);
     }
+
+    public void editPublisher(Long id, String jsons) {
+        HttpClass.PutRequest(url + "/publishers/" + id, jsons);
+    }
+
 
     public List<Publisher> getAllfromTable(String dop_url) {
         List<Publisher> result = new ArrayList<>();
@@ -50,7 +52,9 @@ public class ApiSessionPublisher {
         Long id_parsed = Long.parseLong(ParseID(currentPublisher));
         String name = currentPublisher.getString("name");
         String link = getPublishersLink(currentPublisher);
-        Publisher publisher = new Publisher(id_parsed, name, link);
+        List<String> books_names = ParseBookList(currentPublisher);
+        String b_n_result = String.join(",", books_names);
+        Publisher publisher = new Publisher(id_parsed, name, link, b_n_result);
         return publisher;
     }
 
@@ -63,5 +67,20 @@ public class ApiSessionPublisher {
     public String getPublishersLink(JSONObject currentPublisher){
         String link = currentPublisher.getJSONObject("_links").getJSONObject("self").getString("href");
         return link;
+    }
+
+    public List<String> ParseBookList(JSONObject currentPublisher){
+        List<String> publisherList = new ArrayList<>();
+        String bookListlink = currentPublisher.getJSONObject("_links").getJSONObject("bookList").getString("href");
+        JSONArray answer = HttpClass.GetRequest(bookListlink, "books");
+        for (int i = 0; i < answer.length(); i++) {
+            publisherList.add(bookGetTitle(answer.getJSONObject(i)));
+        }
+        return publisherList;
+    }
+
+    public String bookGetTitle(JSONObject currentBook) {
+        String title = currentBook.getString("title");
+        return title;
     }
 }

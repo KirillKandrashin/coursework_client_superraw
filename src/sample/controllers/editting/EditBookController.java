@@ -1,4 +1,4 @@
-package sample.controllers;
+package sample.controllers.editting;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;

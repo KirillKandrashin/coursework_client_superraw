@@ -1,4 +1,4 @@
-package sample.controllers;
+package sample.controllers.adding;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
@@ -87,7 +87,7 @@ public class AddBookController implements Initializable {
                 String authors_name = authorsList.get(l);
                 if (apiSessionAuthor.getAuthorByName(authors_name) == null) {
                     Author h = new Author(authors_name);
-                    apiSessionAuthor.createAuthor(h);
+                    apiSessionAuthor.createAuthor(h.toJson());
                 }
                 authorList.add(apiSessionAuthor.getAuthorByName(authors_name).getLink());
             }
@@ -96,7 +96,7 @@ public class AddBookController implements Initializable {
                 String publishers_name = publishersList.get(v);
                 if (apiSessionPublisher.getPublisherByName(publishers_name) == null) {
                     Publisher n = new Publisher(publishers_name);
-                    apiSessionPublisher.createPublisher(n);
+                    apiSessionPublisher.createPublisher(n.toJson());
                 }
                 publisherList.add(apiSessionPublisher.getPublisherByName(publishers_name).getLink());
             }
