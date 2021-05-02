@@ -96,6 +96,11 @@ public class SignInController implements Initializable {
                 message.setText(errorMessage);
                 return false;
             }
+            if (!apiSessionUser.getUserByLogin(login).getPassword().equals(password)) {
+                errorMessage += "Неверный логин для user с таким логином";
+                message.setText(errorMessage);
+                return false;
+            }
         }else{
             return false;
         }

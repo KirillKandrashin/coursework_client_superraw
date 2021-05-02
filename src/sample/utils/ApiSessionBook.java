@@ -1,8 +1,5 @@
 package sample.utils;
 
-import kong.unirest.HttpResponse;
-import kong.unirest.JsonNode;
-import kong.unirest.Unirest;
 import kong.unirest.json.JSONArray;
 import kong.unirest.json.JSONObject;
 import sample.models.Author;
@@ -13,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ApiSessionBook {
-    //private static final String url = "https://server-for-coursework.herokuapp.com";
+    //private static final String url = "https://kandrashin-server-coursework.herokuapp.com/";
     private static final String url = "http://localhost:8080";
 
     public void createBook(String jsons) {
@@ -41,7 +38,6 @@ public class ApiSessionBook {
     }
 
     public Book bookFromJson(JSONObject currentBook) {
-          System.out.println(currentBook);
         Long id_parsed = Long.parseLong(ParseID(currentBook));
         String title = currentBook.getString("title");
         String type = currentBook.getString("type");
@@ -57,8 +53,6 @@ public class ApiSessionBook {
             publishers_names.add(ParsePublisherList(currentBook).get(b).getName());
         }
         String p_n_result = String.join(",", publishers_names);
-        System.out.println(a_n_result);
-        System.out.println(p_n_result);
         Book book = new Book(id_parsed, title, a_n_result, p_n_result, type, genre, number_of_copies);
         return book;
     }

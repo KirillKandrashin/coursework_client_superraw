@@ -73,9 +73,10 @@ public class SignUpController implements Initializable {
                 e.printStackTrace();
             }
             Stage stage = new Stage();
+            stage.setTitle("Информационно-справочная система библиотеки");
+            stage.setResizable(false);
             stage.setScene(new Scene(root));
             stage.initModality(Modality.WINDOW_MODAL);
-            //stage.initOwner(this.mainTable.getScene().getWindow());
             SignInController controller = (SignInController) loader.getController();
             ((Stage)((Node)actionEvent.getSource()).getScene().getWindow()).close();
             stage.show();
@@ -92,9 +93,10 @@ public class SignUpController implements Initializable {
             e.printStackTrace();
         }
         Stage stage = new Stage();
+        stage.setTitle("Информационно-справочная система библиотеки");
+        stage.setResizable(false);
         stage.setScene(new Scene(root));
         stage.initModality(Modality.WINDOW_MODAL);
-        //stage.initOwner(this.mainTable.getScene().getWindow());
         SignInController controller = (SignInController) loader.getController();
         ((Stage)((Node)actionEvent.getSource()).getScene().getWindow()).close();
         stage.show();

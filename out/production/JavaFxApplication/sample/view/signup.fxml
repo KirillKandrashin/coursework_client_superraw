@@ -45,7 +45,7 @@
               </Label>
             </children>
         </AnchorPane>
-        <Label layoutX="83.0" layoutY="33.0" text="БИБЛИОТЕКА АКАДЕМИКА ЛЮЛЬКИ" textAlignment="CENTER" textFill="WHITE">
+        <Label layoutX="145.0" layoutY="32.0" text="БИБЛИОТЕКА АКАДЕМИКА ЛЮЛЬКИ" textAlignment="CENTER" textFill="WHITE">
             <font>
                 <Font name="Century Gothic Bold" size="24.0" />
             </font>

@@ -2,14 +2,13 @@ package sample.utils;
 
 import kong.unirest.json.JSONArray;
 import kong.unirest.json.JSONObject;
-import sample.models.Author;
 import sample.models.User;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ApiSessionUser {
-    //private static final String url = "https://server-for-coursework.herokuapp.com";
+    //private static final String url = "https://kandrashin-server-coursework.herokuapp.com/";
     private static final String url = "http://localhost:8080";
 
     public void createUser(String jsons) {
@@ -33,7 +32,6 @@ public class ApiSessionUser {
     }
 
     public User userFromJson(JSONObject currentUser) {
-        System.out.println(currentUser);
         Long id_parsed = Long.parseLong(ParseID(currentUser));
         String login = currentUser.getString("login");
         String password = currentUser.getString("password");

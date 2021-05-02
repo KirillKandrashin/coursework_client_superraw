@@ -23,19 +23,19 @@
                         <Font name="Lobster" size="37.0" />
                     </font>
                 </Label>
-                <Button fx:id="authSignInButton" layoutX="290.0" layoutY="201.0" mnemonicParsing="false" prefHeight="14.0" prefWidth="120.0" onAction="#onSignInClick" text="Войти">
+                <Button fx:id="authSignInButton" layoutX="290.0" layoutY="201.0" mnemonicParsing="false" onAction="#onSignInClick" prefHeight="14.0" prefWidth="120.0" text="Войти">
                     <font>
                         <Font name="Lobster" size="28.0" />
                     </font>
                 </Button>
-              <Button fx:id="authSigUpButton" layoutX="520.0" layoutY="242.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="163.0" onAction="#onSignUpClick" text="Зарегистрироваться">
+              <Button fx:id="authSigUpButton" layoutX="520.0" layoutY="242.0" mnemonicParsing="false" onAction="#onSignUpClick" prefHeight="54.0" prefWidth="163.0" text="Зарегистрироваться">
                   <font>
                       <Font name="Lobster" size="15.0" />
                   </font>
               </Button>
             </children>
         </AnchorPane>
-        <Label layoutX="83.0" layoutY="33.0" text="БИБЛИОТЕКА АКАДЕМИКА ЛЮЛЬКИ" textAlignment="CENTER" textFill="WHITE">
+        <Label layoutX="145.0" layoutY="29.0" text="БИБЛИОТЕКА АКАДЕМИКА ЛЮЛЬКИ" textAlignment="CENTER" textFill="WHITE">
             <font>
                 <Font name="Century Gothic Bold" size="24.0" />
             </font>

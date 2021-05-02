@@ -1,18 +1,14 @@
 package sample.utils;
 
-import kong.unirest.HttpResponse;
-import kong.unirest.JsonNode;
-import kong.unirest.Unirest;
 import kong.unirest.json.JSONArray;
 import kong.unirest.json.JSONObject;
-import sample.models.Author;
 import sample.models.Visitor;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ApiSessionVisitor {
-    //private static final String url = "https://server-for-coursework.herokuapp.com";
+    //private static final String url = "https://kandrashin-server-coursework.herokuapp.com/";
     private static final String url = "http://localhost:8080";
 
     public void createVisitor(String jsons) {
@@ -40,7 +36,6 @@ public class ApiSessionVisitor {
     }
 
     public Visitor visitorFromJson(JSONObject currentVisitor) {
-        System.out.println(currentVisitor);
         Long id_parsed = Long.parseLong(ParseID(currentVisitor));
         String first_name = currentVisitor.getString("first_name");
         String last_name = currentVisitor.getString("last_name");

@@ -11,7 +11,7 @@
             <top>
                 <Pane prefHeight="123.0" prefWidth="843.0" style="-fx-background-color: #1E3C00;" BorderPane.alignment="CENTER">
                     <children>
-                        <Label layoutX="186.0" layoutY="46.0" styleClass="title-text" text="БИБЛИОТЕКА АКАДЕМИКА ЛЮЛЬКИ" textFill="WHITE">
+                        <Label layoutX="251.0" layoutY="44.0" styleClass="title-text" text="БИБЛИОТЕКА АКАДЕМИКА ЛЮЛЬКИ" textFill="WHITE">
                             <font>
                                 <Font name="Century Gothic Bold" size="24.0" />
                             </font></Label>
@@ -44,7 +44,7 @@
                                 </Button>
                                 <Button layoutX="685.0" layoutY="12.0" mnemonicParsing="false" onAction="#onEditClick" text="Изменить" />
                                 <Button layoutX="18.0" layoutY="-99.0" mnemonicParsing="false" onAction="#onSwitchClick" prefHeight="72.0" prefWidth="128.0" text="Список книг" textAlignment="CENTER" />
-                                <Button layoutX="772.0" layoutY="-99.0" mnemonicParsing="false" prefHeight="72.0" prefWidth="128.0" onAction="#onInfoClick" text="Об авторе" textAlignment="CENTER" />
+                                <Button layoutX="772.0" layoutY="-99.0" mnemonicParsing="false" onAction="#onInfoClick" prefHeight="72.0" prefWidth="128.0" text="Об авторе" textAlignment="CENTER" />
                             </children>
                         </Pane>
                         <!-- tabla -->
