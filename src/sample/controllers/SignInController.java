@@ -56,6 +56,7 @@ public class SignInController implements Initializable {
             }
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+            stage.setTitle("Информационно-справочная система библиотеки");
             stage.initModality(Modality.WINDOW_MODAL);
             MainBookController controller = (MainBookController) loader.getController();
             ((Stage) ((Node) actionEvent.getSource()).getScene().getWindow()).close();
@@ -74,6 +75,7 @@ public class SignInController implements Initializable {
         }
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
+        stage.setTitle("Информационно-справочная система библиотеки");
         stage.initModality(Modality.WINDOW_MODAL);
         //stage.initOwner(this.mainTable.getScene().getWindow());
         SignUpController controller = (SignUpController) loader.getController();
@@ -93,7 +95,6 @@ public class SignInController implements Initializable {
             }
             MessageDigest md5 = MessageDigest.getInstance("MD5");
             byte[] bytes = md5.digest(password.getBytes());
-            System.out.println(bytes.toString());
             StringBuilder sb = new StringBuilder();
             for (byte b : bytes){
                 sb.append(String.format("%02X ", b));

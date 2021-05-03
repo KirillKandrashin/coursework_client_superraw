@@ -11,19 +11,19 @@ public class Publisher implements Serializable, ApiModel, ApiModelPut {
     private static final long serialVersionUID = 1447199063826949783L;
     private Long id;
     private String name;
-
-    private String book_name;
+    private String bookList;
 
     private String link;
     private List<String> books_link;
 
 
-    public Publisher(Long id, String name, String link, String book_name) {
+    public Publisher(Long id, String name, String link, String bookList) {
         this.id = id;
         this.name = name;
         this.link = link;
-        this.book_name = book_name;
+        this.bookList = bookList;
     }
+
 
     public Publisher(String name) {
         this.name = name;
@@ -70,12 +70,12 @@ public class Publisher implements Serializable, ApiModel, ApiModelPut {
         this.books_link = books_link;
     }
 
-    public String getBook_name() {
-        return book_name;
+    public String getBookList() {
+        return bookList;
     }
 
-    public void setBook_name(String book_name) {
-        this.book_name = book_name;
+    public void setBookList(String bookList) {
+        this.bookList = bookList;
     }
 
     @Override

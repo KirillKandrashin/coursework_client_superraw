@@ -53,6 +53,7 @@ public class MainPublisherController {
         Parent root = loader.load();
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
+        stage.setTitle("Добавление нового издательства");
         stage.initModality(Modality.WINDOW_MODAL);
         stage.initOwner(this.mainTable.getScene().getWindow());
         AddPublisherController controller = loader.getController();
@@ -71,6 +72,7 @@ public class MainPublisherController {
         }
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
+        stage.setTitle("Информационно-справочная система библиотеки");
         stage.initModality(Modality.WINDOW_MODAL);
         //stage.initOwner(this.mainTable.getScene().getWindow());
         MainVisitorController controller = (MainVisitorController) loader.getController();
@@ -89,6 +91,7 @@ public class MainPublisherController {
         }
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
+        stage.setTitle("Информационно-справочная система библиотеки");
         stage.initModality(Modality.WINDOW_MODAL);
         //stage.initOwner(this.mainTable.getScene().getWindow());
         MainBookController controller = (MainBookController) loader.getController();
@@ -107,6 +110,7 @@ public class MainPublisherController {
         }
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
+        stage.setTitle("Информационно-справочная система библиотеки");
         stage.initModality(Modality.WINDOW_MODAL);
         //stage.initOwner(this.mainTable.getScene().getWindow());
         MainAuthorController controller = (MainAuthorController) loader.getController();
@@ -120,6 +124,7 @@ public class MainPublisherController {
         Parent root = (Parent) loader.load();
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
+        stage.setTitle("Об авторе");
         stage.initModality(Modality.WINDOW_MODAL);
         stage.initOwner(this.mainTable.getScene().getWindow());
         InfoController controller = (InfoController) loader.getController();
@@ -134,6 +139,7 @@ public class MainPublisherController {
             loader.setLocation(this.getClass().getResource("/sample/view/edittingpublishers.fxml"));
             Parent root = loader.load();
             Stage stage = new Stage();
+            stage.setTitle("Изменение информации издательства");
             stage.setScene(new Scene(root));
             stage.initModality(Modality.WINDOW_MODAL);
             stage.initOwner(this.mainTable.getScene().getWindow());

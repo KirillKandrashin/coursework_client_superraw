@@ -7,7 +7,6 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -68,6 +67,7 @@ public class MainVisitorController {
         Parent root = loader.load();
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
+        stage.setTitle("Добавление нового посетителя");
         stage.initModality(Modality.WINDOW_MODAL);
         stage.initOwner(this.mainTable.getScene().getWindow());
         AddVisitorController controller = loader.getController();
@@ -86,6 +86,7 @@ public class MainVisitorController {
         }
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
+        stage.setTitle("Информационно-справочная система библиотеки");
         stage.initModality(Modality.WINDOW_MODAL);
         //stage.initOwner(this.mainTable.getScene().getWindow());
         MainBookController controller = (MainBookController) loader.getController();
@@ -104,6 +105,7 @@ public class MainVisitorController {
         }
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
+        stage.setTitle("Информационно-справочная система библиотеки");
         stage.initModality(Modality.WINDOW_MODAL);
         //stage.initOwner(this.mainTable.getScene().getWindow());
         MainAuthorController controller = (MainAuthorController) loader.getController();
@@ -122,6 +124,7 @@ public class MainVisitorController {
         }
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
+        stage.setTitle("Информационно-справочная система библиотеки");
         stage.initModality(Modality.WINDOW_MODAL);
         //stage.initOwner(this.mainTable.getScene().getWindow());
         MainPublisherController controller = (MainPublisherController)  loader.getController();
@@ -135,6 +138,7 @@ public class MainVisitorController {
         Parent root = (Parent) loader.load();
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
+        stage.setTitle("Об авторе");
         stage.initModality(Modality.WINDOW_MODAL);
         stage.initOwner(this.mainTable.getScene().getWindow());
         InfoController controller = (InfoController) loader.getController();
@@ -150,6 +154,7 @@ public class MainVisitorController {
             Parent root = loader.load();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+            stage.setTitle("Изменение информации посетителя");
             stage.initModality(Modality.WINDOW_MODAL);
             stage.initOwner(this.mainTable.getScene().getWindow());
             EditVisitorController controller = loader.getController();

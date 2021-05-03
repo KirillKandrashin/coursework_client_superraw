@@ -28,12 +28,6 @@
                         <!-- panel de control -->
                         <Pane layoutY="-4.0" prefHeight="55.0" prefWidth="912.0">
                             <children>
-                                <Button fx:id="btnUpdate" layoutX="18.0" layoutY="12.0" mnemonicParsing="false" onAction="#onUpdateClick" text="Обновить">
-                                    <styleClass>
-                                        <String fx:value="btn" />
-                                        <String fx:value="btn-update" />
-                                    </styleClass>
-                                </Button>
                                 <Button fx:id="btnRemove" layoutX="762.0" layoutY="12.0" mnemonicParsing="false" onAction="#onDeleteClick" text="Удалить">
                                     <styleClass>
                                         <String fx:value="btn" />
@@ -47,25 +41,31 @@
                                     </styleClass>
                                 </Button>
                         <Button layoutX="685.0" layoutY="12.0" mnemonicParsing="false" onAction="#onEditClick" text="Изменить" />
+                                <Button fx:id="btnUpdate" layoutX="606.0" layoutY="12.0" mnemonicParsing="false" onAction="#onUpdateClick" text="Обновить">
+                                    <styleClass>
+                                        <String fx:value="btn" />
+                                        <String fx:value="btn-update" />
+                                    </styleClass>
+                                </Button>
+                              <Label fx:id="message" alignment="CENTER" layoutX="-42.0" layoutY="11.0" prefHeight="30.0" prefWidth="343.0" text="Таблица книг" textAlignment="CENTER">
+                                  <font>
+                                      <Font size="20.0" />
+                                  </font>
+                              </Label>
                             </children>
                         </Pane>
                         <!-- tabla -->
                         <TableView fx:id="mainTable" layoutX="14.0" layoutY="51.0" prefHeight="229.0" prefWidth="888.0">
                             <columns>
                                 <TableColumn fx:id="idColumn" prefWidth="35.0" text="ID" />
-                                <TableColumn fx:id="titleColumn" prefWidth="125.0" text="Название" />
-                                <TableColumn fx:id="author_nameColumn" prefWidth="173.1999969482422" text="Автор" />
-                                <TableColumn fx:id="publisher_nameColumn" prefWidth="155.20001220703125" text="Издатель" />
-                                <TableColumn fx:id="genreColumn" prefWidth="149.0" text="Жанр" />
-                                <TableColumn fx:id="typeColumn" prefWidth="112.79998779296875" text="Тип" />
-                                <TableColumn fx:id="number_of_copiesColumn" minWidth="0.0" prefWidth="80.79998779296875" text="Количество" />
+                                <TableColumn fx:id="titleColumn" prefWidth="220.19997024536133" text="Название" />
+                                <TableColumn fx:id="author_nameColumn" prefWidth="144.20001220703125" text="Автор" />
+                                <TableColumn fx:id="publisher_nameColumn" prefWidth="170.0" text="Издатель" />
+                                <TableColumn fx:id="genreColumn" prefWidth="120.39999389648438" text="Жанр" />
+                                <TableColumn fx:id="typeColumn" prefWidth="113.79998779296875" text="Тип" />
+                                <TableColumn fx:id="number_of_copiesColumn" minWidth="0.0" prefWidth="83.20001220703125" text="Количество" />
                             </columns>
                         </TableView>
-                        <Label fx:id="message" alignment="CENTER" layoutX="258.0" layoutY="12.0" prefHeight="30.0" prefWidth="343.0" textAlignment="CENTER" textFill="#9c0909">
-                            <font>
-                                <Font size="10.0" />
-                            </font>
-                        </Label>
                     </children>
                 </Pane>
             </center>

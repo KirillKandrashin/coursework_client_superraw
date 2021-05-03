@@ -1,17 +1,15 @@
 package sample.utils;
 
-import kong.unirest.Unirest;
 import kong.unirest.json.JSONArray;
 import kong.unirest.json.JSONObject;
-import sample.models.Book;
 import sample.models.Publisher;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ApiSessionPublisher {
-    //private static final String url = "https://kandrashin-server-coursework.herokuapp.com/";
-    private static final String url = "http://localhost:8080";
+    private static final String url = "https://kandrashin-server-coursework.herokuapp.com";
+    //private static final String url = "http://localhost:8080";
 
     public void createPublisher(String jsons) {
         HttpClass.PostRequest(url + "/publishers", jsons);

@@ -73,6 +73,7 @@ public class MainBookController {
         Parent root = loader.load();
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
+        stage.setTitle("Добавление новой книги");
         stage.initModality(Modality.WINDOW_MODAL);
         stage.initOwner(this.mainTable.getScene().getWindow());
         AddBookController controller = loader.getController();
@@ -86,6 +87,7 @@ public class MainBookController {
         Parent root = (Parent) loader.load();
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
+        stage.setTitle("Информационно-справочная система библиотеки");
         stage.initModality(Modality.WINDOW_MODAL);
         //stage.initOwner(this.mainTable.getScene().getWindow());
         MainVisitorController controller = (MainVisitorController) loader.getController();
@@ -98,6 +100,7 @@ public class MainBookController {
         Parent root = (Parent) loader.load();
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
+        stage.setTitle("Информационно-справочная система библиотеки");
         stage.initModality(Modality.WINDOW_MODAL);
         MainAuthorController controller = (MainAuthorController) loader.getController();
         ((Stage)((Node)actionEvent.getSource()).getScene().getWindow()).close();
@@ -110,6 +113,7 @@ public class MainBookController {
         Parent root = (Parent) loader.load();
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
+        stage.setTitle("Информационно-справочная система библиотеки");
         stage.initModality(Modality.WINDOW_MODAL);
         stage.initOwner(this.mainTable.getScene().getWindow());
         MainPublisherController controller = (MainPublisherController)  loader.getController();
@@ -123,6 +127,7 @@ public class MainBookController {
         Parent root = (Parent) loader.load();
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
+        stage.setTitle("Об авторе");
         stage.initModality(Modality.WINDOW_MODAL);
         stage.initOwner(this.mainTable.getScene().getWindow());
         InfoController controller = (InfoController) loader.getController();
@@ -139,6 +144,7 @@ public class MainBookController {
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.initModality(Modality.WINDOW_MODAL);
+            stage.setTitle("Изменение информации книги");
             stage.initOwner(this.mainTable.getScene().getWindow());
             EditBookController controller = loader.getController();
             controller.setBook(book);

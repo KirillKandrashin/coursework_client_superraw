@@ -8,8 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ApiSessionVisitor {
-    //private static final String url = "https://kandrashin-server-coursework.herokuapp.com/";
-    private static final String url = "http://localhost:8080";
+    private static final String url = "https://kandrashin-server-coursework.herokuapp.com";
+    //private static final String url = "http://localhost:8080";
 
     public void createVisitor(String jsons) {
         HttpClass.PostRequest(url + "/visitors", jsons);

@@ -8,8 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ApiSessionUser {
-    //private static final String url = "https://kandrashin-server-coursework.herokuapp.com/";
-    private static final String url = "http://localhost:8080";
+    private static final String url = "https://kandrashin-server-coursework.herokuapp.com";
+    //private static final String url = "http://localhost:8080";
 
     public void createUser(String jsons) {
         HttpClass.PostRequest(url + "/users", jsons);

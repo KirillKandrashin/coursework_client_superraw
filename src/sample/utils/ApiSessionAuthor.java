@@ -11,8 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ApiSessionAuthor {
-    //private static final String url = "https://kandrashin-server-coursework.herokuapp.com/";
-    private static final String url = "http://localhost:8080";
+    private static final String url = "https://kandrashin-server-coursework.herokuapp.com";
+    //private static final String url = "http://localhost:8080";
 
     public void createAuthor(String jsons) {
         HttpClass.PostRequest(url + "/authors", jsons);
