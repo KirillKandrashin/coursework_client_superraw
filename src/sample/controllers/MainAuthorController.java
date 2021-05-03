@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -17,6 +18,7 @@ import sample.controllers.adding.AddAuthorController;
 import sample.controllers.editting.EditAuthorController;
 import sample.models.Author;
 import sample.models.AuthorModel;
+import sample.utils.AlertUtil;
 import sample.utils.ApiSessionAuthor;
 
 import java.io.IOException;
@@ -26,7 +28,6 @@ public class MainAuthorController {
     public TableColumn<Author, Long> idColumn;
     public TableColumn<Author, String> nameColumn;
     public TableColumn<Author, String> bookListColumn;
-    public Label message;
 
     private Main main;
     private ApiSessionAuthor apiSessionAuthor = new ApiSessionAuthor();
@@ -59,19 +60,13 @@ public class MainAuthorController {
         stage.showAndWait();
     }
 
-    public void onSwitchVClick(ActionEvent actionEvent) {
+    public void onSwitchVClick(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(this.getClass().getResource("/sample/view/mainformvisitors.fxml"));
-        Parent root = null;
-        try {
-            root = (Parent) loader.load();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        Parent root = (Parent) loader.load();
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
         stage.initModality(Modality.WINDOW_MODAL);
-        //stage.initOwner(this.mainTable.getScene().getWindow());
         MainVisitorController controller = (MainVisitorController) loader.getController();
         ((Stage)((Node)actionEvent.getSource()).getScene().getWindow()).close();
         stage.show();
@@ -107,7 +102,6 @@ public class MainAuthorController {
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
         stage.initModality(Modality.WINDOW_MODAL);
-        //stage.initOwner(this.mainTable.getScene().getWindow());
         MainPublisherController controller = (MainPublisherController) loader.getController();
         ((Stage)((Node)actionEvent.getSource()).getScene().getWindow()).close();
         stage.show();
@@ -126,8 +120,6 @@ public class MainAuthorController {
     }
 
     public void onEditClick(ActionEvent event) throws IOException {
-        String errorMessage = "";
-        message.setText(errorMessage);
         int selectedIndex = mainTable.getSelectionModel().getSelectedIndex();
         if (selectedIndex >= 0) {
             Author author = mainTable.getItems().get(selectedIndex);
@@ -143,8 +135,7 @@ public class MainAuthorController {
             controller.authorModel = this.authorModel;
             stage.showAndWait();
         } else {
-            errorMessage += "Выберите строку, которую хотите изменить.";
-            message.setText(errorMessage);
+            AlertUtil.buildDialog(null,"Выберите строку, которую хотите изменить", Alert.AlertType.WARNING).showAndWait();
         }
     }
 }

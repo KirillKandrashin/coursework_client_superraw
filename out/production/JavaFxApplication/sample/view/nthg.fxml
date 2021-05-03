@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.collections.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1400.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.MainController">
+    <children>
+        <TabPane prefHeight="700.0" prefWidth="1400.0" tabClosingPolicy="UNAVAILABLE">
+            <tabs>
+                <Tab fx:id="OrdersTab" text="Orders">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <TableView fx:id="orderTable" layoutX="325.0" prefHeight="669.0" prefWidth="1075.0" />
+                                <Button fx:id="orderDelete" layoutX="14.0" layoutY="235.0" mnemonicParsing="false" onAction="#onOrderDeleteButton" prefHeight="26.0" prefWidth="140.0" text="Delete" />
+                                <TextField fx:id="orderNewCustomer" layoutX="13.0" layoutY="120.0" prefHeight="26.0" prefWidth="300.0" promptText="Customer's phone number" />
+                                <DatePicker fx:id="orderNewDate" layoutX="13.0" layoutY="41.0" prefHeight="25.0" prefWidth="300.0" promptText="Date" />
+                                <ChoiceBox fx:id="orderNewType" layoutX="14.0" layoutY="80.0" prefHeight="25.0" prefWidth="300.0" value="Haircut">
+                                    <items>
+                                        <FXCollections fx:factory="observableArrayList">
+                                            <String fx:value="Haircut" />
+                                            <String fx:value="Beard modeling" />
+                                            <String fx:value="Chile haircut" />
+                                        </FXCollections>
+                                    </items>
+                                </ChoiceBox>
+                                <TextField fx:id="orderNewBarber" layoutX="13.0" layoutY="160.0" prefHeight="26.0" prefWidth="300.0" promptText="Barber" />
+                                <TextField fx:id="orderNewNote" layoutX="13.0" layoutY="200.0" prefHeight="26.0" prefWidth="300.0" promptText="Note" />
+                                <Button fx:id="orderAdd" layoutX="173.0" layoutY="235.0" mnemonicParsing="false" onAction="#onOrderAddButton" prefHeight="26.0" prefWidth="140.0" text="Add" />
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+                <Tab fx:id="BarbersTab" text="Barbers">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <TableView fx:id="barberTable" layoutX="325.0" prefHeight="669.0" prefWidth="1075.0" />
+                                <TextField fx:id="barberNewName" layoutX="15.0" layoutY="50.0" prefHeight="26.0" prefWidth="290.0" promptText="Name" />
+                                <TextField fx:id="barberNewNumber" layoutX="15.0" layoutY="90.0" prefHeight="26.0" prefWidth="290.0" promptText="Phone number" />
+                                <TextField fx:id="barberNewAge" layoutX="15.0" layoutY="200.0" prefHeight="26.0" prefWidth="50.0" promptText="Age" />
+                                <TextField fx:id="barberNewSalary" layoutX="15.0" layoutY="300.0" prefHeight="26.0" prefWidth="290.0" promptText="Salary" />
+                                <Button fx:id="barberAdd" layoutX="15.0" layoutY="350.0" mnemonicParsing="false" onAction="#onBarberAddAction" prefHeight="26.0" prefWidth="140.0" text="Add" />
+                                <Button fx:id="barberDelete" layoutX="166.0" layoutY="350.0" mnemonicParsing="false" onAction="#onBarberDeleteButton" prefHeight="26.0" prefWidth="140.0" text="Delete" />
+                                <DatePicker fx:id="barberNewDate" layoutX="15.0" layoutY="251.0" prefHeight="25.0" prefWidth="300.0" />
+                                <RadioButton fx:id="barberMale" layoutX="14.0" layoutY="141.0" mnemonicParsing="false" selected="true" text="Male" toggleGroup="$barberNewSex">
+                                    <toggleGroup>
+                                        <ToggleGroup fx:id="barberNewSex" />
+                                    </toggleGroup>
+                                </RadioButton>
+                                <RadioButton fx:id="barberFemale" layoutX="85.0" layoutY="141.0" mnemonicParsing="false" text="Female" toggleGroup="$barberNewSex" />
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+                <Tab fx:id="UsersTab" text="Users">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <TableView fx:id="userTable" layoutX="325.0" prefHeight="669.0" prefWidth="1075.0" />
+                                <Button fx:id="userDelete" layoutX="14.0" layoutY="165.0" mnemonicParsing="false" onAction="#onUserDeleteButton" prefHeight="26.0" prefWidth="140.0" text="Delete" />
+                                <TextField fx:id="userNewName" layoutX="13.0" layoutY="40.0" prefHeight="26.0" prefWidth="300.0" promptText="Name" />
+                                <TextField fx:id="userNewPhoneNumber" layoutX="13.0" layoutY="80.0" prefHeight="26.0" prefWidth="300.0" promptText="PhoneNumber" />
+                                <TextField fx:id="userNewEmail" layoutX="13.0" layoutY="120.0" prefHeight="26.0" prefWidth="300.0" promptText="Email" />
+                                <Button fx:id="userAdd" layoutX="173.0" layoutY="165.0" mnemonicParsing="false" onAction="#onOUserAddButton" prefHeight="26.0" prefWidth="140.0" text="Add" />
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+                <Tab fx:id="OrderTypeTab" text="Order Types">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <TableView fx:id="orderTypeTable" layoutX="325.0" prefHeight="669.0" prefWidth="1075.0" />
+                                <Button fx:id="orderTypeDelete" layoutX="14.0" layoutY="165.0" mnemonicParsing="false" onAction="#onOrderTypeDeleteButton" prefHeight="26.0" prefWidth="140.0" text="Delete" />
+                                <TextField fx:id="orderTypeNewType" layoutX="13.0" layoutY="40.0" prefHeight="26.0" prefWidth="300.0" promptText="Type" />
+                                <TextField fx:id="orderTypeNewPrice" layoutX="13.0" layoutY="80.0" prefHeight="26.0" prefWidth="300.0" promptText="Price" />
+                                <Button fx:id="orderTypeAdd" layoutX="173.0" layoutY="165.0" mnemonicParsing="false" onAction="#onOrderTypeAddButton" prefHeight="26.0" prefWidth="140.0" text="Add" />
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+            </tabs>
+        </TabPane>
+    </children>
+</AnchorPane>

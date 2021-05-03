@@ -3,10 +3,12 @@ package sample.controllers.editting;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import sample.models.Book;
 import sample.models.BookModel;
+import sample.utils.AlertUtil;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -37,17 +39,21 @@ public class EditBookController implements Initializable {
 
     private boolean isInputValid() {
         if (txtBookTitle.getText() == null || txtBookTitle.getText().length() == 0) {
+            AlertUtil.buildDialog(null,"Вы не ввели название", Alert.AlertType.ERROR).showAndWait();
             return false;
         }
         if (txtBookGenre.getText() == null || txtBookGenre.getText().length() == 0) {
+            AlertUtil.buildDialog(null,"Вы не ввели жанр", Alert.AlertType.ERROR).showAndWait();
             return false;
         }
         if (txtBookType.getText() == null || txtBookType.getText().length() == 0) {
+            AlertUtil.buildDialog(null,"Вы не ввели тип издания", Alert.AlertType.ERROR).showAndWait();
             return false;
         }
         try{
             Integer.parseInt(this.txtBookNumbers_of_copies.getText());
         } catch (NumberFormatException e) {
+            AlertUtil.buildDialog(null,"Вы ввели неверные данные в строку количества", Alert.AlertType.ERROR).showAndWait();
             return false;
         }
         return true;
@@ -56,8 +62,8 @@ public class EditBookController implements Initializable {
     public void onSaveClick(ActionEvent actionEvent) {
         if (getBook().getTitle() != null) {
             this.bookModel.edit(getBook());
+            ((Stage)((Node)actionEvent.getSource()).getScene().getWindow()).close();
         }
-        ((Stage)((Node)actionEvent.getSource()).getScene().getWindow()).close();
     }
 
     public void onCancelClick(ActionEvent actionEvent) {

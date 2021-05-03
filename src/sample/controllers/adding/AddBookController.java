@@ -3,9 +3,11 @@ package sample.controllers.adding;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import sample.models.*;
+import sample.utils.AlertUtil;
 import sample.utils.ApiSessionAuthor;
 import sample.utils.ApiSessionPublisher;
 
@@ -33,23 +35,29 @@ public class AddBookController implements Initializable {
 
     private boolean isInputValid() {
         if (txtBookTitle.getText() == null || txtBookTitle.getText().length() == 0) {
+            AlertUtil.buildDialog(null,"Вы не ввели необходимые данные в строку название", Alert.AlertType.ERROR).showAndWait();
             return false;
         }
         if (txtBookAuthor.getText() == null || txtBookAuthor.getText().length() == 0) {
+            AlertUtil.buildDialog(null,"Вы не ввели необходимые данные в строку авторство", Alert.AlertType.ERROR).showAndWait();
             return false;
         }
         if (txtBookPublisher.getText() == null || txtBookPublisher.getText().length() == 0) {
+            AlertUtil.buildDialog(null,"Вы не ввели необходимые данные в строку издательтво", Alert.AlertType.ERROR).showAndWait();
             return false;
         }
         if (txtBookGenre.getText() == null || txtBookGenre.getText().length() == 0) {
+            AlertUtil.buildDialog(null,"Вы не ввели необходимые данные в строку жанр издания", Alert.AlertType.ERROR).showAndWait();
             return false;
         }
         if (txtBookType.getText() == null || txtBookType.getText().length() == 0) {
+            AlertUtil.buildDialog(null,"Вы не ввели необходимые данные в строку тип издания", Alert.AlertType.ERROR).showAndWait();
             return false;
         }
         try{
             Integer.parseInt(this.txtBookNumbers_of_copies.getText());
         } catch (NumberFormatException e) {
+            AlertUtil.buildDialog(null,"Вы ввели неверные данные в строку количество", Alert.AlertType.ERROR).showAndWait();
             return false;
         }
         return true;
@@ -58,8 +66,8 @@ public class AddBookController implements Initializable {
      public void onSaveClick(ActionEvent actionEvent) {
          if (!getBook().equals("")) {
              this.bookModel.add(getBook());
+             ((Stage)((Node)actionEvent.getSource()).getScene().getWindow()).close();
          }
-        ((Stage)((Node)actionEvent.getSource()).getScene().getWindow()).close();
     }
 
     public void onCancelClick(ActionEvent actionEvent) {

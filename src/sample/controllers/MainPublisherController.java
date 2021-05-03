@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -17,6 +18,7 @@ import sample.controllers.adding.AddPublisherController;
 import sample.controllers.editting.EditPublisherController;
 import sample.models.Publisher;
 import sample.models.PublisherModel;
+import sample.utils.AlertUtil;
 import sample.utils.ApiSessionPublisher;
 
 import java.io.IOException;
@@ -26,7 +28,6 @@ public class MainPublisherController {
     public TableColumn<Publisher, Long> idColumn;
     public TableColumn<Publisher, String> nameColumn;
     public TableColumn<Publisher, String> bookListColumn;
-    public Label message;
 
     private Main main;
     private ApiSessionPublisher apiSessionPublisher = new ApiSessionPublisher();
@@ -126,8 +127,6 @@ public class MainPublisherController {
     }
 
     public void onEditClick(ActionEvent event) throws IOException {
-        String errorMessage = "";
-        message.setText(errorMessage);
         int selectedIndex = mainTable.getSelectionModel().getSelectedIndex();
         if (selectedIndex >= 0) {
             Publisher publisher = mainTable.getItems().get(selectedIndex);
@@ -143,8 +142,7 @@ public class MainPublisherController {
             controller.publisherModel = this.publisherModel;
             stage.showAndWait();
         } else {
-            errorMessage += "Выберите строку, которую хотите изменить.";
-            message.setText(errorMessage);
+            AlertUtil.buildDialog(null,"Выберите строку, которую хотите изменить", Alert.AlertType.WARNING).showAndWait();
         }
     }
 }

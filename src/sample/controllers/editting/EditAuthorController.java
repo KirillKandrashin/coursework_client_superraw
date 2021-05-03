@@ -3,10 +3,12 @@ package sample.controllers.editting;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import sample.models.Author;
 import sample.models.AuthorModel;
+import sample.utils.AlertUtil;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -31,6 +33,7 @@ public class EditAuthorController implements Initializable {
 
     private boolean isInputValid() {
         if (txtAuthorName.getText() == null || txtAuthorName.getText().length() == 0) {
+            AlertUtil.buildDialog(null,"Вы не ввели данные в строку автора", Alert.AlertType.ERROR).showAndWait();
             return false;
         }
         return true;
@@ -39,8 +42,8 @@ public class EditAuthorController implements Initializable {
     public void onSaveClick(ActionEvent actionEvent) {
         if (getAuthor().getName() != null) {
             this.authorModel.edit(getAuthor());
+            ((Stage)((Node)actionEvent.getSource()).getScene().getWindow()).close();
         }
-        ((Stage)((Node)actionEvent.getSource()).getScene().getWindow()).close();
     }
 
     public void onCancelClick(ActionEvent actionEvent) {

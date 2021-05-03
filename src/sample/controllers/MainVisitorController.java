@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -17,6 +18,7 @@ import sample.controllers.adding.AddVisitorController;
 import sample.controllers.editting.EditVisitorController;
 import sample.models.Visitor;
 import sample.models.VisitorModel;
+import sample.utils.AlertUtil;
 import sample.utils.ApiSessionVisitor;
 
 import java.io.IOException;
@@ -27,13 +29,11 @@ public class MainVisitorController {
     public TableColumn<Visitor, String> first_nameColumn;
     public TableColumn<Visitor, String> last_nameColumn;
     public TableColumn<Visitor, String> library_cardColumn;
-    public Label message;
 
     private Main main;
     private ApiSessionVisitor apiSessionVisitor = new ApiSessionVisitor();
-    //private ObservableList<Visitor> visitorList = FXCollections.observableArrayList();
     VisitorModel visitorModel = new VisitorModel();
-    //Visitor visitor_for_editting = new Visitor();
+
 
     public void initialize() {
         this.idColumn.setCellValueFactory(new PropertyValueFactory("id"));
@@ -47,8 +47,6 @@ public class MainVisitorController {
     }
 
     public void onDeleteClick(ActionEvent actionEvent) {
-        String errorMessage = "";
-        message.setText(errorMessage);
         int selectedIndex = mainTable.getSelectionModel().getSelectedIndex();
 
         if (selectedIndex >= 0) {
@@ -56,8 +54,7 @@ public class MainVisitorController {
             apiSessionVisitor.deleteVisitor(visitor);
             mainTable.getItems().remove(selectedIndex);
         } else {
-            errorMessage += "Выберите строку, которую хотите удалить.";
-            message.setText(errorMessage);
+            AlertUtil.buildDialog(null,"Выберите строку, которую хотите удалить", Alert.AlertType.WARNING).showAndWait();
         }
     }
 
@@ -145,8 +142,6 @@ public class MainVisitorController {
     }
 
     public void onEditClick(ActionEvent event) throws IOException {
-        String errorMessage = "";
-        message.setText(errorMessage);
         int selectedIndex = mainTable.getSelectionModel().getSelectedIndex();
         if (selectedIndex >= 0) {
             Visitor visitor = mainTable.getItems().get(selectedIndex);
@@ -162,8 +157,7 @@ public class MainVisitorController {
             controller.visitorModel = this.visitorModel;
             stage.showAndWait();
         } else {
-            errorMessage += "Выберите строку, которую хотите изменить.";
-            message.setText(errorMessage);
+            AlertUtil.buildDialog(null,"Выберите строку, которую хотите изменить", Alert.AlertType.WARNING).showAndWait();
         }
     }
 }

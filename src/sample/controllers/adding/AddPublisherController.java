@@ -3,12 +3,14 @@ package sample.controllers.adding;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import sample.models.Author;
 import sample.models.Publisher;
 import sample.models.PublisherModel;
 import sample.models.Publisher;
+import sample.utils.AlertUtil;
 import sample.utils.ApiSessionAuthor;
 import sample.utils.ApiSessionPublisher;
 
@@ -32,6 +34,7 @@ public class AddPublisherController implements Initializable {
 
     private boolean isInputValid() {
         if (txtPublisherName.getText() == null || txtPublisherName.getText().length() == 0) {
+            AlertUtil.buildDialog(null,"Вы не ввели необходимые данные ", Alert.AlertType.ERROR).showAndWait();
             return false;
         }
         return true;
@@ -40,8 +43,8 @@ public class AddPublisherController implements Initializable {
     public void onSaveClick(ActionEvent actionEvent) {
         if (!getPublisher().equals("")) {
             this.publisherModel.add(getPublisher());
+            ((Stage)((Node)actionEvent.getSource()).getScene().getWindow()).close();
         }
-        ((Stage)((Node)actionEvent.getSource()).getScene().getWindow()).close();
     }
 
     public void onCancelClick(ActionEvent actionEvent) {

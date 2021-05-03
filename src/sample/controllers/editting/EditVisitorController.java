@@ -3,9 +3,11 @@ package sample.controllers.editting;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import sample.models.*;
+import sample.utils.AlertUtil;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -34,12 +36,15 @@ public class EditVisitorController implements Initializable {
 
     private boolean isInputValid() {
         if (txtVisitorFirstName.getText() == null || txtVisitorFirstName.getText().length() == 0) {
+            AlertUtil.buildDialog(null,"Вы не ввели данные в строку имени", Alert.AlertType.ERROR).showAndWait();
             return false;
         }
         if (txtVisitorLastName.getText() == null || txtVisitorLastName.getText().length() == 0) {
+            AlertUtil.buildDialog(null,"Вы не ввели данные в строку фамилии", Alert.AlertType.ERROR).showAndWait();
             return false;
         }
         if (txtVisitorLibraryCard.getText() == null || txtVisitorLibraryCard.getText().length() == 0) {
+            AlertUtil.buildDialog(null,"Вы не ввели данные в строку №чит.билета", Alert.AlertType.ERROR).showAndWait();
             return false;
         }
         return true;
@@ -48,8 +53,8 @@ public class EditVisitorController implements Initializable {
     public void onSaveClick(ActionEvent actionEvent) {
         if (getVisitor().getId() != null) {
             this.visitorModel.edit(getVisitor());
+            ((Stage)((Node)actionEvent.getSource()).getScene().getWindow()).close();
         }
-        ((Stage)((Node)actionEvent.getSource()).getScene().getWindow()).close();
     }
 
     public void onCancelClick(ActionEvent actionEvent) {

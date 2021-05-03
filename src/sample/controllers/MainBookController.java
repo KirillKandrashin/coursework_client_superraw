@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -17,6 +18,7 @@ import sample.controllers.adding.AddBookController;
 import sample.controllers.editting.EditBookController;
 import sample.models.Book;
 import sample.models.BookModel;
+import sample.utils.AlertUtil;
 import sample.utils.ApiSessionBook;
 
 import java.io.IOException;
@@ -30,13 +32,10 @@ public class MainBookController {
     public TableColumn<Book, String> genreColumn;
     public TableColumn<Book, String> typeColumn;
     public TableColumn<Book, Integer> number_of_copiesColumn;
-    public Label message;
 
     private Main main;
     private ApiSessionBook apiSessionBook = new ApiSessionBook();
-    //private ObservableList<Book> bookList = FXCollections.observableArrayList();
     BookModel bookModel = new BookModel();
-   // Book book_for_editting = new Book();
 
     public void initialize() {
         this.idColumn.setCellValueFactory(new PropertyValueFactory("id"));
@@ -53,8 +52,6 @@ public class MainBookController {
     }
 
     public void onDeleteClick(ActionEvent actionEvent) {
-        String errorMessage = "";
-        message.setText(errorMessage);
         int selectedIndex = mainTable.getSelectionModel().getSelectedIndex();
 
         if (selectedIndex >= 0) {
@@ -62,8 +59,7 @@ public class MainBookController {
             apiSessionBook.deleteBook(book);
             mainTable.getItems().remove(selectedIndex);
         } else {
-            errorMessage += "Выберите строку, которую хотите удалить.";
-            message.setText(errorMessage);
+            AlertUtil.buildDialog(null,"Выберите строку, которую хотите удалить", Alert.AlertType.WARNING).showAndWait();
         }
     }
 
@@ -84,15 +80,10 @@ public class MainBookController {
         stage.showAndWait();
     }
 
-    public void onSwitchVClick(ActionEvent actionEvent) {
+    public void onSwitchVClick(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(this.getClass().getResource("/sample/view/mainformvisitors.fxml"));
-        Parent root = null;
-        try {
-            root = (Parent) loader.load();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        Parent root = (Parent) loader.load();
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
         stage.initModality(Modality.WINDOW_MODAL);
@@ -101,33 +92,22 @@ public class MainBookController {
         ((Stage)((Node)actionEvent.getSource()).getScene().getWindow()).close();
         stage.show();
     }
-    public void onSwitchAClick(ActionEvent actionEvent) {
+    public void onSwitchAClick(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(this.getClass().getResource("/sample/view/mainformauthors.fxml"));
-        Parent root = null;
-        try {
-            root = (Parent) loader.load();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        Parent root = (Parent) loader.load();
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
         stage.initModality(Modality.WINDOW_MODAL);
-        //stage.initOwner(this.mainTable.getScene().getWindow());
         MainAuthorController controller = (MainAuthorController) loader.getController();
         ((Stage)((Node)actionEvent.getSource()).getScene().getWindow()).close();
         stage.show();
     }
 
-    public void onSwitchPClick(ActionEvent actionEvent) {
+    public void onSwitchPClick(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(this.getClass().getResource("/sample/view/mainformpublishers.fxml"));
-        Parent root = null;
-        try {
-            root = (Parent) loader.load();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        Parent root = (Parent) loader.load();
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
         stage.initModality(Modality.WINDOW_MODAL);
@@ -150,8 +130,6 @@ public class MainBookController {
     }
 
     public void onEditClick(ActionEvent event) throws IOException {
-        String errorMessage = "";
-        message.setText(errorMessage);
         int selectedIndex = mainTable.getSelectionModel().getSelectedIndex();
         if (selectedIndex >= 0) {
             Book book = mainTable.getItems().get(selectedIndex);
@@ -167,8 +145,7 @@ public class MainBookController {
             controller.bookModel = this.bookModel;
             stage.showAndWait();
         } else {
-            errorMessage += "Выберите строку, которую хотите изменить.";
-            message.setText(errorMessage);
+            AlertUtil.buildDialog(null,"Выберите строку, которую хотите изменить", Alert.AlertType.WARNING).showAndWait();
         }
     }
 }
