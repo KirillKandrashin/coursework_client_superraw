@@ -38,15 +38,15 @@ public class EditBookController implements Initializable {
     }
 
     private boolean isInputValid() {
-        if (txtBookTitle.getText() == null || txtBookTitle.getText().length() == 0) {
+        if (String.join(" ", txtBookTitle.getText()).length() == 0) {
             AlertUtil.buildDialog(null,"Вы не ввели название", Alert.AlertType.ERROR).showAndWait();
             return false;
         }
-        if (txtBookGenre.getText() == null || txtBookGenre.getText().length() == 0) {
+        if (String.join(" ", txtBookGenre.getText()) == null) {
             AlertUtil.buildDialog(null,"Вы не ввели жанр", Alert.AlertType.ERROR).showAndWait();
             return false;
         }
-        if (txtBookType.getText() == null || txtBookType.getText().length() == 0) {
+        if (String.join(" ", txtBookType.getText()) == null) {
             AlertUtil.buildDialog(null,"Вы не ввели тип издания", Alert.AlertType.ERROR).showAndWait();
             return false;
         }

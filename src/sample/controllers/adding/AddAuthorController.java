@@ -26,7 +26,7 @@ public class AddAuthorController implements Initializable {
     }
 
     private boolean isInputValid() {
-        if (txtAuthorName.getText() == null || txtAuthorName.getText().length() == 0) {
+        if (String.join(" ", txtAuthorName.getText()).length() == 0) {
             AlertUtil.buildDialog(null,"Вы не ввели необходимые данные в строку автор", Alert.AlertType.ERROR).showAndWait();
             return false;
         }

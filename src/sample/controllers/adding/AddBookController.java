@@ -34,23 +34,23 @@ public class AddBookController implements Initializable {
     }
 
     private boolean isInputValid() {
-        if (txtBookTitle.getText() == null || txtBookTitle.getText().length() == 0) {
+        if (String.join(" ", txtBookTitle.getText()).length() == 0) {
             AlertUtil.buildDialog(null,"Вы не ввели необходимые данные в строку название", Alert.AlertType.ERROR).showAndWait();
             return false;
         }
-        if (txtBookAuthor.getText() == null || txtBookAuthor.getText().length() == 0) {
+        if (String.join(" ", txtBookAuthor.getText()).length() == 0) {
             AlertUtil.buildDialog(null,"Вы не ввели необходимые данные в строку авторство", Alert.AlertType.ERROR).showAndWait();
             return false;
         }
-        if (txtBookPublisher.getText() == null || txtBookPublisher.getText().length() == 0) {
+        if (String.join(" ", txtBookPublisher.getText()).length() == 0) {
             AlertUtil.buildDialog(null,"Вы не ввели необходимые данные в строку издательтво", Alert.AlertType.ERROR).showAndWait();
             return false;
         }
-        if (txtBookGenre.getText() == null || txtBookGenre.getText().length() == 0) {
+        if (String.join(" ", txtBookGenre.getText()).length() == 0) {
             AlertUtil.buildDialog(null,"Вы не ввели необходимые данные в строку жанр издания", Alert.AlertType.ERROR).showAndWait();
             return false;
         }
-        if (txtBookType.getText() == null || txtBookType.getText().length() == 0) {
+        if (String.join(" ", txtBookType.getText()).length() == 0) {
             AlertUtil.buildDialog(null,"Вы не ввели необходимые данные в строку тип издания", Alert.AlertType.ERROR).showAndWait();
             return false;
         }

@@ -33,7 +33,7 @@ public class AddPublisherController implements Initializable {
     }
 
     private boolean isInputValid() {
-        if (txtPublisherName.getText() == null || txtPublisherName.getText().length() == 0) {
+        if (String.join(" ", txtPublisherName.getText()).length() == 0) {
             AlertUtil.buildDialog(null,"Вы не ввели необходимые данные ", Alert.AlertType.ERROR).showAndWait();
             return false;
         }

@@ -35,15 +35,15 @@ public class EditVisitorController implements Initializable {
     }
 
     private boolean isInputValid() {
-        if (txtVisitorFirstName.getText() == null || txtVisitorFirstName.getText().length() == 0) {
+        if (String.join(" ", txtVisitorFirstName.getText()).length() == 0) {
             AlertUtil.buildDialog(null,"Вы не ввели данные в строку имени", Alert.AlertType.ERROR).showAndWait();
             return false;
         }
-        if (txtVisitorLastName.getText() == null || txtVisitorLastName.getText().length() == 0) {
+        if (String.join(" ", txtVisitorLastName.getText()).length() == 0) {
             AlertUtil.buildDialog(null,"Вы не ввели данные в строку фамилии", Alert.AlertType.ERROR).showAndWait();
             return false;
         }
-        if (txtVisitorLibraryCard.getText() == null || txtVisitorLibraryCard.getText().length() == 0) {
+        if (String.join(" ", txtVisitorLibraryCard.getText()).length() == 0) {
             AlertUtil.buildDialog(null,"Вы не ввели данные в строку №чит.билета", Alert.AlertType.ERROR).showAndWait();
             return false;
         }
